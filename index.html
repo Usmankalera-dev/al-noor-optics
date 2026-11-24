@@ -39,8 +39,10 @@
   --white:#ffffff; --soft:#f2ede4;
 }
 *{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:clip}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--white);line-height:1.6}
+img,iframe{max-width:100%}
 img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
 .container{max-width:1140px;margin:0 auto;padding:0 20px}
@@ -195,6 +197,8 @@ footer a:hover{color:var(--gold)}
   .hero .container{grid-template-columns:1fr;padding-top:44px;padding-bottom:44px;gap:32px}
   .hero-img img{height:320px}
   .services-grid{grid-template-columns:repeat(2,1fr)}
+  .steps,.lens-grid{grid-template-columns:1fr}
+  .booking-wrap{grid-template-columns:1fr;gap:28px}
   .cards{grid-template-columns:1fr}
   .guide-wrap,.about-grid,.visit-grid{grid-template-columns:1fr}
   .strip .container{grid-template-columns:1fr;gap:12px}
