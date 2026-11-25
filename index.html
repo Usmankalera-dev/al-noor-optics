@@ -193,6 +193,14 @@ footer a:hover{color:var(--gold)}
 .to-top{position:fixed;right:18px;bottom:88px;z-index:60;width:48px;height:48px;border-radius:50%;background:var(--navy);color:#fff;border:0;cursor:pointer;font-size:20px;display:none;align-items:center;justify-content:center;box-shadow:0 10px 22px rgba(0,0,0,.25)}
 .to-top.show{display:flex}
 .urdu-tag{font-size:17px;color:var(--gold-2);font-weight:600;margin-top:14px}
+/* frame collection */
+.frames-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.frame-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 12px 16px;text-align:center}
+.frame-card img{width:100%;aspect-ratio:4/3;object-fit:contain;background:#fff;border-radius:10px}
+.frame-card h3{font-size:15px;font-family:'Inter',system-ui,sans-serif;font-weight:700;color:var(--navy);margin:10px 0 6px}
+.frame-card a{font-size:13.5px;font-weight:700;color:var(--gold-2)}
+.frame-card a:hover{text-decoration:underline}
+.frames-note{color:var(--muted);font-size:15px;max-width:720px}
 @media(max-width:900px){
   .hero .container{grid-template-columns:1fr;padding-top:44px;padding-bottom:44px;gap:32px}
   .hero-img img{height:320px}
@@ -200,6 +208,7 @@ footer a:hover{color:var(--gold)}
   .steps,.lens-grid{grid-template-columns:1fr}
   .booking-wrap{grid-template-columns:1fr;gap:28px}
   .cards{grid-template-columns:1fr}
+  .frames-grid{grid-template-columns:repeat(3,1fr)}
   .guide-wrap,.about-grid,.visit-grid{grid-template-columns:1fr}
   .strip .container{grid-template-columns:1fr;gap:12px}
   .foot-grid{grid-template-columns:1fr}
@@ -207,6 +216,10 @@ footer a:hover{color:var(--gold)}
   .menu-btn{display:block}
   .nav-links.open{display:flex;position:absolute;top:72px;left:0;right:0;background:#fff;flex-direction:column;padding:18px 24px;gap:16px;border-bottom:1px solid var(--line);box-shadow:0 18px 30px rgba(0,0,0,.12)}
   .nav-cta{display:none}
+}
+@media(max-width:560px){
+  .frames-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .frame-card h3{font-size:13.5px}
 }
 @media(max-width:520px){
   .services-grid{grid-template-columns:1fr}
@@ -235,6 +248,7 @@ footer a:hover{color:var(--gold)}
     <nav class="nav-links" id="navLinks">
       <a href="#services">Services</a>
       <a href="#collections">Collections</a>
+      <a href="#frames">Frames</a>
       <a href="#guide">Frame Guide</a>
       <a href="#book">Book a Test</a>
       <a href="#visit">Visit Us</a>
@@ -356,6 +370,69 @@ footer a:hover{color:var(--gold)}
             <a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20contact%20lenses." target="_blank" rel="noopener">Ask on WhatsApp →</a>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRAME COLLECTION -->
+  <section id="frames" style="padding-top:0">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Frame Collection</span>
+        <h2>50 frames to try on</h2>
+        <p class="frames-note">A look at the styles you will find in store — round, square, aviator, cat-eye, rimless and more. Photographs are representative; visit the store to try them on your own face. Prices confirmed in store.</p>
+      </div>
+      <div class="frames-grid">
+        <div class="frame-card reveal"><img src="assets/frames/frame-01.jpg" alt="Aviator Silver Metal eyeglasses frame" loading="lazy"><h3>Aviator Silver Metal</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Aviator%20Silver%20Metal%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-02.jpg" alt="Black Wayfarer eyeglasses frame" loading="lazy"><h3>Black Wayfarer</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Wayfarer%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-03.jpg" alt="Brown Rectangular eyeglasses frame" loading="lazy"><h3>Brown Rectangular</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Brown%20Rectangular%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-04.jpg" alt="Black Cat-Eye eyeglasses frame" loading="lazy"><h3>Black Cat-Eye</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Cat-Eye%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-05.jpg" alt="Half-Rim Silver eyeglasses frame" loading="lazy"><h3>Half-Rim Silver</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Half-Rim%20Silver%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-06.jpg" alt="Black Oversized Square eyeglasses frame" loading="lazy"><h3>Black Oversized Square</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Oversized%20Square%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-07.jpg" alt="Silver Rectangular Metal eyeglasses frame" loading="lazy"><h3>Silver Rectangular Metal</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Silver%20Rectangular%20Metal%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-08.jpg" alt="Tortoiseshell Square eyeglasses frame" loading="lazy"><h3>Tortoiseshell Square</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Tortoiseshell%20Square%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-09.jpg" alt="Black Wayfarer eyeglasses frame" loading="lazy"><h3>Black Wayfarer</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Wayfarer%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-10.jpg" alt="Black Aviator Metal eyeglasses frame" loading="lazy"><h3>Black Aviator Metal</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Aviator%20Metal%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-11.jpg" alt="Brown Round eyeglasses frame" loading="lazy"><h3>Brown Round</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Brown%20Round%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-12.jpg" alt="Black Clubmaster eyeglasses frame" loading="lazy"><h3>Black Clubmaster</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Clubmaster%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-13.jpg" alt="Gold Round Metal eyeglasses frame" loading="lazy"><h3>Gold Round Metal</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Gold%20Round%20Metal%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-14.jpg" alt="Red Half-Rim eyeglasses frame" loading="lazy"><h3>Red Half-Rim</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Red%20Half-Rim%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-15.jpg" alt="Black Oversized Square eyeglasses frame" loading="lazy"><h3>Black Oversized Square</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Oversized%20Square%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-16.jpg" alt="Black Rectangular eyeglasses frame" loading="lazy"><h3>Black Rectangular</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Rectangular%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-17.jpg" alt="Black Round eyeglasses frame" loading="lazy"><h3>Black Round</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Round%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-18.jpg" alt="Silver Rectangular Metal eyeglasses frame" loading="lazy"><h3>Silver Rectangular Metal</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Silver%20Rectangular%20Metal%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-19.jpg" alt="Tortoiseshell Round eyeglasses frame" loading="lazy"><h3>Tortoiseshell Round</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Tortoiseshell%20Round%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-20.jpg" alt="Black Rectangular eyeglasses frame" loading="lazy"><h3>Black Rectangular</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Rectangular%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-21.jpg" alt="Black Cat-Eye eyeglasses frame" loading="lazy"><h3>Black Cat-Eye</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Cat-Eye%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-22.jpg" alt="Black Half-Rim eyeglasses frame" loading="lazy"><h3>Black Half-Rim</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Half-Rim%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-23.jpg" alt="Black Square eyeglasses frame" loading="lazy"><h3>Black Square</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Square%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-24.jpg" alt="Black Rounded Rectangular eyeglasses frame" loading="lazy"><h3>Black Rounded Rectangular</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Rounded%20Rectangular%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-25.jpg" alt="Rimless Clear eyeglasses frame" loading="lazy"><h3>Rimless Clear</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Rimless%20Clear%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-26.jpg" alt="Black Round Metal eyeglasses frame" loading="lazy"><h3>Black Round Metal</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Round%20Metal%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-27.jpg" alt="Brown Square eyeglasses frame" loading="lazy"><h3>Brown Square</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Brown%20Square%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-28.jpg" alt="Tortoiseshell Round eyeglasses frame" loading="lazy"><h3>Tortoiseshell Round</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Tortoiseshell%20Round%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-29.jpg" alt="Black Rounded Rectangular eyeglasses frame" loading="lazy"><h3>Black Rounded Rectangular</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Rounded%20Rectangular%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-30.jpg" alt="Brown Rectangular eyeglasses frame" loading="lazy"><h3>Brown Rectangular</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Brown%20Rectangular%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-31.jpg" alt="Black Clubmaster eyeglasses frame" loading="lazy"><h3>Black Clubmaster</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Clubmaster%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-32.jpg" alt="Clear Transparent eyeglasses frame" loading="lazy"><h3>Clear Transparent</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Clear%20Transparent%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-33.jpg" alt="Gold Rectangular Metal eyeglasses frame" loading="lazy"><h3>Gold Rectangular Metal</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Gold%20Rectangular%20Metal%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-34.jpg" alt="Black Oversized Square eyeglasses frame" loading="lazy"><h3>Black Oversized Square</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Oversized%20Square%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-35.jpg" alt="Silver Oval Metal eyeglasses frame" loading="lazy"><h3>Silver Oval Metal</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Silver%20Oval%20Metal%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-36.jpg" alt="Black Oversized Square eyeglasses frame" loading="lazy"><h3>Black Oversized Square</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Oversized%20Square%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-37.jpg" alt="Tortoiseshell Oval eyeglasses frame" loading="lazy"><h3>Tortoiseshell Oval</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Tortoiseshell%20Oval%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-38.jpg" alt="Black Rectangular Amber Temples eyeglasses frame" loading="lazy"><h3>Black Rectangular Amber Temples</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Rectangular%20Amber%20Temples%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-39.jpg" alt="Gold Aviator Metal eyeglasses frame" loading="lazy"><h3>Gold Aviator Metal</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Gold%20Aviator%20Metal%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-40.jpg" alt="Brown Rectangular eyeglasses frame" loading="lazy"><h3>Brown Rectangular</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Brown%20Rectangular%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-41.jpg" alt="Clear Transparent eyeglasses frame" loading="lazy"><h3>Clear Transparent</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Clear%20Transparent%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-42.jpg" alt="Gold Rimless eyeglasses frame" loading="lazy"><h3>Gold Rimless</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Gold%20Rimless%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-43.jpg" alt="Rimless Clear eyeglasses frame" loading="lazy"><h3>Rimless Clear</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Rimless%20Clear%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-44.jpg" alt="Black Square eyeglasses frame" loading="lazy"><h3>Black Square</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Square%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-45.jpg" alt="Black Rectangular eyeglasses frame" loading="lazy"><h3>Black Rectangular</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Rectangular%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-46.jpg" alt="Black Cat-Eye eyeglasses frame" loading="lazy"><h3>Black Cat-Eye</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Cat-Eye%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-47.jpg" alt="Black Gold Clubmaster eyeglasses frame" loading="lazy"><h3>Black Gold Clubmaster</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Black%20Gold%20Clubmaster%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-48.jpg" alt="Clear Round eyeglasses frame" loading="lazy"><h3>Clear Round</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Clear%20Round%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-49.jpg" alt="Silver Oval Metal eyeglasses frame" loading="lazy"><h3>Silver Oval Metal</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Silver%20Oval%20Metal%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+        <div class="frame-card reveal"><img src="assets/frames/frame-50.jpg" alt="Brown Rectangular eyeglasses frame" loading="lazy"><h3>Brown Rectangular</h3><a href="https://wa.me/923252331085?text=Assalam-o-Alaikum%2C%20I%20want%20to%20ask%20about%20the%20Brown%20Rectangular%20frame%20at%20Al-Noor%20Optics." target="_blank" rel="noopener">Ask on WhatsApp</a></div>
       </div>
     </div>
   </section>
