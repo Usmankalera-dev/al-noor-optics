@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin — Al-Noor Optics</title>
+<style>
+  :root{--navy:#0e2a47;--gold:#c6a15b;--gold2:#a5823d;--cream:#f7f3ea;--ink:#1c2733;--muted:#6b7a8a;--line:#e5ddcb;--red:#b3402e;--green:#1e7d4f}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--cream);color:var(--ink);font-size:15.5px;line-height:1.5}
+  header{background:var(--navy);color:#fff;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  header h1{font-family:Georgia,serif;font-size:22px;margin:0}
+  header h1 span{color:var(--gold)}
+  header a{color:#d8c9a3;text-decoration:none;font-size:14px}
+  main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:18px}
+  .card h2{font-family:Georgia,serif;font-size:19px;margin:0 0 6px;color:var(--navy)}
+  .card p{color:var(--muted);margin:6px 0 12px;font-size:14.5px}
+  label{display:block;font-weight:600;font-size:13.5px;margin:12px 0 4px}
+  input[type=text],input[type=password],input[type=number],select{width:100%;padding:10px 12px;border:1px solid #cfc6ae;border-radius:9px;font-size:15px;font-family:inherit;background:#fff}
+  input:focus{outline:2px solid var(--gold);outline-offset:1px}
+  .btn{display:inline-block;border:0;border-radius:10px;padding:11px 20px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit}
+  .btn-gold{background:var(--gold);color:#fff}
+  .btn-gold:hover{background:var(--gold2)}
+  .btn-ghost{background:#fff;border:1px solid var(--line);color:var(--navy)}
+  .btn-red{background:#fff;border:1px solid #e5b7ae;color:var(--red)}
+  .btn:disabled{opacity:.55;cursor:wait}
+  .row{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
+  .row>div{flex:1;min-width:140px}
+  #status{margin:14px 0;padding:12px 14px;border-radius:10px;font-size:14.5px;display:none;white-space:pre-line}
+  #status.ok{display:block;background:#e8f5ee;color:var(--green);border:1px solid #bfe0cd}
+  #status.err{display:block;background:#fdeeea;color:var(--red);border:1px solid #f2c4ba}
+  #status.busy{display:block;background:#eef3f8;color:var(--navy);border:1px solid #ccd9e6}
+  .frame-row{display:flex;gap:10px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:10px;margin-bottom:10px;background:#fff}
+  .frame-row img{width:64px;height:48px;object-fit:contain;background:#fff;border:1px solid var(--line);border-radius:8px;flex:none}
+  .frame-row .fields{flex:1;display:grid;grid-template-columns:1fr 110px;gap:8px}
+  .badge{display:inline-block;background:#fdf3d7;color:#8a6d1f;font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:6px}
+  .hint{font-size:13.5px;color:var(--muted);background:#f4efe2;border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-top:10px}
+  .hint b{color:var(--navy)}
+  .hidden{display:none}
+  .login-box{max-width:420px;margin:60px auto 0}
+  .login-box .card{padding:28px}
+  .err-text{color:var(--red);font-size:14px;margin-top:8px;display:none}
+  footer{max-width:860px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:13.5px}
+  @media(max-width:560px){.frame-row .fields{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Al-Noor Optics <span>— Admin</span></h1>
+  <div><a href="index.html" target="_blank" rel="noopener">View live site ↗</a></div>
+</header>
+<main>
+
+  <!-- LOGIN -->
+  <div id="loginView" class="login-box">
+    <div class="card">
+      <h2>Admin login</h2>
+      <p>Enter the admin password to manage frames, prices and shop details.</p>
+      <label for="pw">Admin password</label>
+      <input id="pw" type="password" autocomplete="current-password" placeholder="Enter password">
+      <div style="margin-top:14px"><button class="btn btn-gold" id="loginBtn" type="button">Log in</button></div>
+      <div class="err-text" id="loginErr">Wrong password. Please try again.</div>
+      <div class="hint">First time? Use the default password you were given, then change it below in <b>Security</b> after logging in.</div>
+    </div>
+  </div>
+
+  <!-- PANEL -->
+  <div id="panelView" class="hidden">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+      <div><b>Welcome, admin.</b> <span style="color:var(--muted)">Changes publish to the live site when you press Publish.</span></div>
+      <button class="btn btn-ghost" id="logoutBtn" type="button">Log out</button>
+    </div>
+
+    <div id="status"></div>
+
+    <div class="card">
+      <h2>1 · GitHub access</h2>
+      <p>Publishing writes to the website's GitHub repo. Paste a token once — it stays only in <b>this browser</b> (never on the website, never sent anywhere except GitHub).</p>
+      <label for="ghToken">GitHub token (Contents: Read and write)</label>
+      <input id="ghToken" type="password" autocomplete="off" placeholder="ghp_… or github_pat_…">
+      <div class="row" style="margin-top:12px">
+        <button class="btn btn-gold" id="saveTokenBtn" type="button">Save token on this device</button>
+        <button class="btn btn-ghost" id="reloadBtn" type="button">Reload from live site</button>
+      </div>
+      <div class="hint"><b>How to make a token:</b> GitHub → your profile picture → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token. Name it “Al-Noor Optics admin”. Repository access: <b>Only select repositories → Usmankalera-dev/al-noor-optics</b>. Permissions → Repository permissions → <b>Contents: Read and write</b>. Generate, copy the token, paste it above. Expiry 90 days is fine — make a new one when it expires.</div>
+    </div>
+
+    <div class="card">
+      <h2>2 · Frames <span id="frameCount" style="color:var(--muted);font-size:14px"></span></h2>
+      <p>Add a frame, change its name or price, or remove it. New photos should be on a <b>white background</b> (JPG or PNG).</p>
+      <div id="framesList"></div>
+      <h3 style="font-size:15px;margin:18px 0 4px">Add a new frame</h3>
+      <div class="row">
+        <div><label for="newName">Frame name</label><input id="newName" type="text" placeholder="e.g. Gold Round Metal"></div>
+        <div><label for="newPrice">Price (Rs, optional)</label><input id="newPrice" type="text" inputmode="numeric" placeholder="e.g. 4500"></div>
+        <div><label for="newFile">Photo (white background)</label><input id="newFile" type="file" accept="image/jpeg,image/png"></div>
+      </div>
+      <div style="margin-top:12px"><button class="btn btn-ghost" id="addFrameBtn" type="button">+ Add frame to list</button></div>
+      <div class="hint">Removed frames disappear from the live gallery. Their photo files stay in the repo — harmless.</div>
+    </div>
+
+    <div class="card">
+      <h2>3 · Shop details</h2>
+      <p>These appear across the whole site — top bar, header, about, visit section and footer.</p>
+      <div class="row">
+        <div><label for="setPhoneOptics">Optics phone</label><input id="setPhoneOptics" type="text"></div>
+        <div><label for="setPhoneHospital">Hospital phone</label><input id="setPhoneHospital" type="text"></div>
+        <div><label for="setWhatsapp">WhatsApp number (country code, no +)</label><input id="setWhatsapp" type="text" placeholder="923252331085"></div>
+      </div>
+      <label for="setAddressShort">Address — short (top bar)</label>
+      <input id="setAddressShort" type="text">
+      <label for="setAddress">Address (hero badge + about)</label>
+      <input id="setAddress" type="text">
+      <label for="setAddressFull">Address — full (visit + footer)</label>
+      <input id="setAddressFull" type="text">
+      <label for="setTimings">Timings note</label>
+      <input id="setTimings" type="text">
+    </div>
+
+    <div class="card">
+      <h2>4 · Security — change admin password</h2>
+      <p>Leave empty to keep the current password.</p>
+      <div class="row">
+        <div><label for="newPw">New password</label><input id="newPw" type="password" autocomplete="new-password"></div>
+        <div><label for="newPw2">Repeat new password</label><input id="newPw2" type="password" autocomplete="new-password"></div>
+      </div>
+      <div class="hint"><b>Honest note:</b> this login is a basic gate, not bank-level security. It keeps casual visitors out, but anyone who reads the page code could work the password out — so pick a password you use nowhere else, and change the default after your first login.</div>
+    </div>
+
+    <div class="card">
+      <h2>5 · Publish</h2>
+      <p>Publishing saves frames, prices and shop details to the live site. It takes about <b>2 minutes</b> for the live site to update after publishing.</p>
+      <button class="btn btn-gold" id="publishBtn" type="button" style="font-size:16px;padding:13px 26px">Publish changes</button>
+      <div class="hint">Bookings still arrive on <b>WhatsApp</b> — there is no booking inbox here, because the site does not store bookings anywhere.</div>
+    </div>
+  </div>
+</main>
+<footer>Al-Noor Optics admin · The panel edits the live website's files on GitHub. Keep your GitHub token private — it can edit the site.</footer>
+<script>
+const REPO = 'Usmankalera-dev/al-noor-optics';
+const API = 'https://api.github.com/repos/' + REPO + '/contents/';
+let ADMIN_HASH = '8016b755f9fba9fbf01225f735332ff9fb04f2b6dc42a4e2ce99e8411f575b20';
+let frames = [];
+let shas = {};
+let nextFrameNum = 51;
+let token = localStorage.getItem('alnoor-gh-token') || '';
+
+const $ = id => document.getElementById(id);
+const statusBox = $('status');
+function status(msg, kind){ statusBox.textContent = msg; statusBox.className = kind || ''; }
+function b64encode(str){ return btoa(unescape(encodeURIComponent(str))); }
+function b64decode(b64){ return decodeURIComponent(escape(atob(b64.replace(/\s/g,'')))); }
+async function sha256hex(str){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2,'0')).join('');
+}
+async function ghGet(path){
+  if(!token) return null;
+  const r = await fetch(API + path, {headers:{Authorization:'Bearer '+token, Accept:'application/vnd.github+json'}});
+  if(!r.ok) return null;
+  const j = await r.json();
+  return {sha:j.sha, text:b64decode(j.content || '')};
+}
+async function ghPut(path, contentB64, sha, message){
+  const body = {message, content:contentB64, branch:'main'};
+  if(sha) body.sha = sha;
+  const r = await fetch(API + path, {method:'PUT', headers:{Authorization:'Bearer '+token, Accept:'application/vnd.github+json', 'Content-Type':'application/json'}, body:JSON.stringify(body)});
+  if(!r.ok){ const t = await r.text(); throw new Error('GitHub refused ' + path + ' (' + r.status + '): ' + t.slice(0,200)); }
+  return r.json();
+}
+function fillSettings(s){
+  $('setPhoneOptics').value = s.phoneOptics || '';
+  $('setPhoneHospital').value = s.phoneHospital || '';
+  $('setWhatsapp').value = s.whatsapp || '';
+  $('setAddressShort').value = s.addressShort || '';
+  $('setAddress').value = s.address || '';
+  $('setAddressFull').value = s.addressFull || '';
+  $('setTimings').value = s.timings || '';
+}
+function readSettings(){
+  return {
+    phoneOptics: $('setPhoneOptics').value.trim(),
+    phoneHospital: $('setPhoneHospital').value.trim(),
+    whatsapp: $('setWhatsapp').value.trim().replace(/[^0-9]/g,''),
+    addressShort: $('setAddressShort').value.trim(),
+    address: $('setAddress').value.trim(),
+    addressFull: $('setAddressFull').value.trim(),
+    timings: $('setTimings').value.trim()
+  };
+}
+function renderFrames(){
+  $('frameCount').textContent = '(' + frames.length + ' frames)';
+  const list = $('framesList');
+  if(!frames.length){ list.innerHTML = '<p style="color:var(--muted)">No frames yet.</p>'; return; }
+  list.innerHTML = '';
+  frames.forEach((f, i) => {
+    const row = document.createElement('div');
+    row.className = 'frame-row';
+    const img = document.createElement('img');
+    img.src = f.isNew && f.dataUrl ? f.dataUrl : 'assets/frames/' + f.file;
+    img.alt = f.style;
+    const fields = document.createElement('div');
+    fields.className = 'fields';
+    const nameIn = document.createElement('input');
+    nameIn.type = 'text'; nameIn.value = f.style; nameIn.placeholder = 'Frame name';
+    nameIn.addEventListener('input', () => { f.style = nameIn.value; });
+    const priceIn = document.createElement('input');
+    priceIn.type = 'text'; priceIn.inputMode = 'numeric'; priceIn.value = f.price || ''; priceIn.placeholder = 'Price Rs (blank = in store)';
+    priceIn.addEventListener('input', () => { f.price = priceIn.value.trim(); });
+    fields.appendChild(nameIn); fields.appendChild(priceIn);
+    const del = document.createElement('button');
+    del.type = 'button'; del.className = 'btn btn-red'; del.textContent = 'Remove';
+    del.addEventListener('click', () => { if(confirm('Remove "' + (f.style || f.file) + '" from the live gallery?')){ frames.splice(i,1); renderFrames(); } });
+    row.appendChild(img); row.appendChild(fields); row.appendChild(del);
+    if(f.isNew){
+      const b = document.createElement('span');
+      b.className = 'badge'; b.textContent = 'NEW — publishes on Publish';
+      row.appendChild(b);
+    }
+    list.appendChild(row);
+  });
+}
+async function loadAll(){
+  status('Loading live data…', 'busy');
+  try{
+    let fj = null, sj = null;
+    const fApi = await ghGet('assets/frames/frames.json');
+    if(fApi){ shas['assets/frames/frames.json'] = fApi.sha; fj = JSON.parse(fApi.text); }
+    else { const r = await fetch('assets/frames/frames.json'); fj = await r.json(); }
+    const sApi = await ghGet('settings.json');
+    if(sApi){ shas['settings.json'] = sApi.sha; sj = JSON.parse(sApi.text); }
+    else { const r = await fetch('settings.json'); sj = await r.json(); }
+    frames = (fj.frames || []).map(f => ({file:f.file, style:f.style, price:f.price || '', isNew:false}));
+    let max = 0;
+    frames.forEach(f => { const m = /frame-(\d+)\./.exec(f.file); if(m) max = Math.max(max, parseInt(m[1],10)); });
+    nextFrameNum = max + 1;
+    fillSettings(sj);
+    renderFrames();
+    status('', '');
+    statusBox.className = '';
+  }catch(e){
+    status('Could not load the live data: ' + e.message + ' — check your connection and try Reload.', 'err');
+  }
+}
+function showPanel(){
+  $('loginView').classList.add('hidden');
+  $('panelView').classList.remove('hidden');
+  if(token) $('ghToken').value = token;
+  loadAll();
+}
+async function doLogin(){
+  const pw = $('pw').value;
+  if(!pw) return;
+  const btn = $('loginBtn');
+  btn.disabled = true;
+  try{
+    if(!crypto.subtle){ $('loginErr').textContent = 'This browser cannot check the password (needs a secure connection). Open the admin page over https.'; $('loginErr').style.display = 'block'; return; }
+    const h = await sha256hex(pw);
+    if(h === ADMIN_HASH){
+      sessionStorage.setItem('alnoor-admin','1');
+      showPanel();
+    }else{
+      $('loginErr').textContent = 'Wrong password. Please try again.';
+      $('loginErr').style.display = 'block';
+    }
+  }finally{ btn.disabled = false; }
+}
+$('loginBtn').addEventListener('click', doLogin);
+$('pw').addEventListener('keydown', e => { if(e.key === 'Enter') doLogin(); });
+$('logoutBtn').addEventListener('click', () => { sessionStorage.removeItem('alnoor-admin'); location.reload(); });
+$('saveTokenBtn').addEventListener('click', () => {
+  token = $('ghToken').value.trim();
+  if(!token){ status('Paste a GitHub token first.', 'err'); return; }
+  localStorage.setItem('alnoor-gh-token', token);
+  status('Token saved on this device. Reloading live data…', 'ok');
+  loadAll();
+});
+$('reloadBtn').addEventListener('click', loadAll);
+$('addFrameBtn').addEventListener('click', () => {
+  const name = $('newName').value.trim();
+  const price = $('newPrice').value.trim();
+  const file = $('newFile').files[0];
+  if(!name){ status('Give the new frame a name first.', 'err'); return; }
+  if(!file){ status('Choose a photo for the new frame first.', 'err'); return; }
+  const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
+  if(!['jpg','jpeg','png'].includes(ext)){ status('Photo must be JPG or PNG.', 'err'); return; }
+  const fname = 'frame-' + nextFrameNum + '.' + (ext === 'jpeg' ? 'jpg' : ext);
+  const reader = new FileReader();
+  reader.onload = () => {
+    frames.push({file:fname, style:name, price, isNew:true, dataUrl:reader.result});
+    nextFrameNum++;
+    $('newName').value = ''; $('newPrice').value = ''; $('newFile').value = '';
+    renderFrames();
+    status('Frame added to the list — press Publish to put it live.', 'ok');
+  };
+  reader.onerror = () => status('Could not read that photo file.', 'err');
+  reader.readAsDataURL(file);
+});
+$('publishBtn').addEventListener('click', async () => {
+  const btn = $('publishBtn');
+  if(!token){ status('Save a GitHub token first (section 1) — publishing writes to the GitHub repo.', 'err'); return; }
+  const newPw = $('newPw').value, newPw2 = $('newPw2').value;
+  if(newPw && newPw !== newPw2){ status('The two new passwords do not match.', 'err'); return; }
+  if(newPw && newPw.length < 6){ status('New password must be at least 6 characters.', 'err'); return; }
+  btn.disabled = true;
+  status('Publishing…', 'busy');
+  try{
+    const done = [];
+    const fj = {frames: frames.map(f => ({file:f.file, style:f.style, price:f.price || ''}))};
+    await ghPut('assets/frames/frames.json', b64encode(JSON.stringify(fj, null, 1) + '\n'), shas['assets/frames/frames.json'], 'Admin: update frames (' + fj.frames.length + ')');
+    done.push('frames.json (' + fj.frames.length + ' frames)');
+    const s = readSettings();
+    await ghPut('settings.json', b64encode(JSON.stringify(s, null, 1) + '\n'), shas['settings.json'], 'Admin: update shop details');
+    done.push('settings.json (shop details)');
+    for(const f of frames.filter(x => x.isNew)){
+      const b64 = f.dataUrl.split(',')[1];
+      await ghPut('assets/frames/' + f.file, b64, null, 'Admin: add frame photo ' + f.file);
+      f.isNew = false; delete f.dataUrl;
+      done.push('photo ' + f.file);
+    }
+    if(newPw){
+      const aApi = await ghGet('admin.html');
+      if(!aApi) throw new Error('Could not read admin.html to change the password.');
+      const newHash = await sha256hex(newPw);
+      const updated = aApi.text.replace(/let ADMIN_HASH = '[^']+';/, "let ADMIN_HASH = '" + newHash + "';");
+      if(updated === aApi.text) throw new Error('Could not update the password inside admin.html.');
+      await ghPut('admin.html', b64encode(updated), aApi.sha, 'Admin: change admin password');
+      ADMIN_HASH = newHash;
+      $('newPw').value = ''; $('newPw2').value = '';
+      done.push('admin password changed');
+    }
+    renderFrames();
+    status('Published ✓\n' + done.join('\n') + '\n\nThe live site updates in about 2 minutes. Refresh the site to check.', 'ok');
+    loadAll();
+  }catch(e){
+    status('Publish failed: ' + e.message, 'err');
+  }finally{ btn.disabled = false; }
+});
+if(sessionStorage.getItem('alnoor-admin') === '1'){ showPanel(); }
+</script>
+</body>
+</html>
